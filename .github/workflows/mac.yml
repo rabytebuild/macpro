@@ -28,8 +28,7 @@ jobs:
         echo "$ngrok_url"
         
     - name: Wait for 24 hours
-      uses: jakejarvis/wait-action@v2
-      with:
-        time: 24h
+      run: sleep 86400  # 24 hours in seconds
+      
     - name: Ending Session
       run: echo "MacOs End MF"
