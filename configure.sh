@@ -30,4 +30,4 @@ brew install --cask ngrok
 
 #configure ngrok and start it
 ngrok authtoken 2Hd7yeF4INCKbg2aP9rGMLnDqBX_5K7WhATjW8eUxS6UoHSRa
-ngrok tcp --domain=readily-touching-teal.ngrok-free.app 5900 &
+ngrok tcp 5900 &
