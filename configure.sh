@@ -1,33 +1,33 @@
-#configure.sh VNC_USER_PASSWORD VNC_PASSWORD NGROK_AUTH_TOKEN
+#configure.sh
 
-#disable spotlight indexing
+# Disable spotlight indexing
 sudo mdutil -i off -a
 
-#Create new account
-sudo dscl . -create /Users/vncuser
-sudo dscl . -create /Users/vncuser UserShell /bin/bash
-sudo dscl . -create /Users/vncuser RealName "Rabiu Hadi Salisu"
-sudo dscl . -create /Users/vncuser UniqueID 1001
-sudo dscl . -create /Users/vncuser PrimaryGroupID 80
-sudo dscl . -create /Users/vncuser NFSHomeDirectory /Users/vncuser
-sudo dscl . -passwd /Users/vncuser $1
-sudo dscl . -passwd /Users/vncuser $1
-sudo createhomedir -c -u vncuser > /dev/null
+# Create new account
+sudo dscl . -create /Users/rhsalisu
+sudo dscl . -create /Users/rhsalisu UserShell /bin/bash
+sudo dscl . -create /Users/rhsalisu RealName "Rabiu Hadi Salisu"
+sudo dscl . -create /Users/rhsalisu UniqueID 1001
+sudo dscl . -create /Users/rhsalisu PrimaryGroupID 80
+sudo dscl . -create /Users/rhsalisu NFSHomeDirectory /Users/rhsalisu
+sudo dscl . -passwd /Users/rhsalisu Rabiu2004@
+sudo dscl . -passwd /Users/rhsalisu Rabiu2004@
+sudo createhomedir -c -u rhsalisu > /dev/null
 
-#Enable VNC
+# Enable VNC
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -allUsers -privs -all
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -clientopts -setvnclegacy -vnclegacy yes 
 
-#VNC password - http://hints.macworld.com/article.php?story=20071103011608872
-echo $2 | perl -we 'BEGIN { @k = unpack "C*", pack "H*", "1734516E8BA8C5E2FF1C39567390ADCA"}; $_ = <>; chomp; s/^(.{8}).*/$1/; @p = unpack "C*", $_; foreach (@k) { printf "%02X", $_ ^ (shift @p || 0) }; print "\n"' | sudo tee /Library/Preferences/com.apple.VNCSettings.txt
+# VNC password - http://hints.macworld.com/article.php?story=20071103011608872
+echo rhsalisu | perl -we 'BEGIN { @k = unpack "C*", pack "H*", "1734516E8BA8C5E2FF1C39567390ADCA"}; $_ = <>; chomp; s/^(.{8}).*/$1/; @p = unpack "C*", $_; foreach (@k) { printf "%02X", $_ ^ (shift @p || 0) }; print "\n"' | sudo tee /Library/Preferences/com.apple.VNCSettings.txt
 
-#Start VNC/reset changes
+# Start VNC/reset changes
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -restart -agent -console
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate
 
-#install ngrok
+# Install ngrok
 brew install --cask ngrok
 
-#configure ngrok and start it
+# Configure ngrok and start it
 ngrok authtoken 2Hd7yeF4INCKbg2aP9rGMLnDqBX_5K7WhATjW8eUxS6UoHSRa
 ngrok tcp 5900 &
