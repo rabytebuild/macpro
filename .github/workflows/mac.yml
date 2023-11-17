@@ -26,3 +26,10 @@ jobs:
       run: |
         ngrok_url=$(curl --silent http://127.0.0.1:4040/api/tunnels | jq -r '.tunnels[0].public_url' || echo "Error: Unable to retrieve ngrok URL")
         echo "$ngrok_url"
+        
+    - name: Wait for 24 hours
+      uses: jakejarvis/wait-action@v1
+      with:
+        time: 24h
+    - name: Ending Session
+      run: echo "MacOs End MF"
