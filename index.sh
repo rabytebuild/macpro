@@ -1,8 +1,19 @@
 #!/bin/bash
 
-# Install RustDesk
+# Check if Homebrew is installed
+if ! command -v brew &> /dev/null; then
+    echo "Error: Homebrew is not installed. Please install Homebrew first."
+    exit 1
+fi
+
+# Install RustDesk using Homebrew
 echo "Installing RustDesk..."
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustdesk.com | sh
+if brew install --cask rustdesk; then
+    echo "RustDesk installed successfully."
+else
+    echo "Error: Unable to install RustDesk. Please check for errors during the installation."
+    exit 1
+fi
 
 # Start RustDesk
 echo "Starting RustDesk..."
@@ -17,10 +28,10 @@ RUSTDESK_PID=$(pgrep -f RustDesk)
 
 if [ -n "$RUSTDESK_PID" ]; then
     # Replace 'YOUR_ID_HERE' with your desired RustDesk ID
-    RUSTDESK_ID="459 912 527"
+    RUSTDESK_ID="459 912 525"
 
     # Replace 'YOUR_PASSWORD_HERE' with your desired RustDesk password
-    RUSTDESK_PASSWORD="Rabiu2004@"
+    RUSTDESK_PASSWORD="root"
 
     osascript -e "tell application \"RustDesk\" to activate"
     osascript -e "tell application \"System Events\" to keystroke \"$RUSTDESK_ID\""
