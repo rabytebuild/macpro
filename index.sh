@@ -17,31 +17,35 @@ fi
 
 # Start RustDesk
 echo "Starting RustDesk..."
-open -a RustDesk
+RUSTDESK_APP="/Applications/RustDesk.app"
 
-# Wait for RustDesk to start
-sleep 5
+if [ -d "$RUSTDESK_APP" ]; then
+    open -a "RustDesk"
+    sleep 5
 
-# Set RustDesk ID and Password
-echo "Setting RustDesk ID and Password..."
-RUSTDESK_PID=$(pgrep -f RustDesk)
+    # Set RustDesk ID and Password
+    echo "Setting RustDesk ID and Password..."
+    RUSTDESK_PID=$(pgrep -f "RustDesk")
 
-if [ -n "$RUSTDESK_PID" ]; then
-    # Replace 'YOUR_ID_HERE' with your desired RustDesk ID
-    RUSTDESK_ID="459 912 525"
+    if [ -n "$RUSTDESK_PID" ]; then
+        # Replace 'YOUR_ID_HERE' with your desired RustDesk ID
+        RUSTDESK_ID="459 912 525"
 
-    # Replace 'YOUR_PASSWORD_HERE' with your desired RustDesk password
-    RUSTDESK_PASSWORD="root"
+        # Replace 'YOUR_PASSWORD_HERE' with your desired RustDesk password
+        RUSTDESK_PASSWORD="root"
 
-    osascript -e "tell application \"RustDesk\" to activate"
-    osascript -e "tell application \"System Events\" to keystroke \"$RUSTDESK_ID\""
-    osascript -e "tell application \"System Events\" to keystroke return"
-    osascript -e "tell application \"System Events\" to keystroke \"$RUSTDESK_PASSWORD\""
-    osascript -e "tell application \"System Events\" to keystroke return"
+        osascript -e "tell application \"RustDesk\" to activate"
+        osascript -e "tell application \"System Events\" to keystroke \"$RUSTDESK_ID\""
+        osascript -e "tell application \"System Events\" to keystroke return"
+        osascript -e "tell application \"System Events\" to keystroke \"$RUSTDESK_PASSWORD\""
+        osascript -e "tell application \"System Events\" to keystroke return"
 
-    echo "RustDesk ID and Password set successfully."
+        echo "RustDesk ID and Password set successfully."
+    else
+        echo "Error: RustDesk not running."
+    fi
 else
-    echo "Error: RustDesk not running."
+    echo "Error: RustDesk application not found in /Applications."
 fi
 
 echo "Installation and configuration completed."
