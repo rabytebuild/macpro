@@ -1,4 +1,7 @@
-./configure.sh VNC_USER_PASSWORD VNC_PASSWORD NGROK_AUTH_TOKEN
+#!/bin/bash
+#setting up
+chmod +x configure.sh
+source configure.sh VNC_USER_PASSWORD VNC_PASSWORD NGROK_AUTH_TOKEN
 
 #disable spotlight indexing
 sudo mdutil -i off -a
