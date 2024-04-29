@@ -1,18 +1,18 @@
-#configure.sh VNC_USER_PASSWORD VNC_PASSWORD NGROK_AUTH_TOKEN
+./configure.sh VNC_USER_PASSWORD VNC_PASSWORD NGROK_AUTH_TOKEN
 
 #disable spotlight indexing
 sudo mdutil -i off -a
 
 #Create new account
-sudo dscl . -create /Users/vncuser
-sudo dscl . -create /Users/vncuser UserShell /bin/bash
-sudo dscl . -create /Users/vncuser RealName "Rabiu Hadi Salisu"
-sudo dscl . -create /Users/vncuser UniqueID 1001
-sudo dscl . -create /Users/vncuser PrimaryGroupID 80
-sudo dscl . -create /Users/vncuser NFSHomeDirectory /Users/vncuser
-sudo dscl . -passwd /Users/vncuser $1
-sudo dscl . -passwd /Users/vncuser $1
-sudo createhomedir -c -u vncuser > /dev/null
+sudo dscl . -create /Users/rhsalisu
+sudo dscl . -create /Users/rhsalisu UserShell /bin/bash
+sudo dscl . -create /Users/rhsalisu RealName "Rabiu Hadi Salisu"
+sudo dscl . -create /Users/rhsalisu UniqueID 1001
+sudo dscl . -create /Users/rhsalisu PrimaryGroupID 80
+sudo dscl . -create /Users/rhsalisu NFSHomeDirectory /Users/rhsalisu
+sudo dscl . -passwd /Users/rhsalisu $1
+sudo dscl . -passwd /Users/rhsalisu $1
+sudo createhomedir -c -u rhsalisu > /dev/null
 
 #Enable VNC
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -allUsers -privs -all
@@ -29,5 +29,5 @@ sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resourc
 brew install --cask ngrok
 
 #configure ngrok and start it
-ngrok authtoken 2Hd7yeF4INCKbg2aP9rGMLnDqBX_5K7WhATjW8eUxS6UoHSRa
+ngrok authtoken $3
 ngrok tcp 5900 &
