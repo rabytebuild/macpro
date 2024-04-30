@@ -1,4 +1,4 @@
-name: mac
+name: Engine Core DeKernalyxe
 
 on:
   workflow_dispatch:
