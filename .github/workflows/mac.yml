@@ -21,6 +21,7 @@ jobs:
         VNC_PASSWORD: ${{ secrets.VNC_PASSWORD }}
       run: |
         source configure.sh "$VNC_USER_PASSWORD" "$VNC_PASSWORD" "$NGROK_AUTH_TOKEN"
+        source download.sh
 
     - name: ngrok is now listening to VNC connections on...
       run: |
