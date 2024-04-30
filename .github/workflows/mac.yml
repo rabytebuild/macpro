@@ -1,4 +1,4 @@
-name: mac
+name: Engine Core
 
 on:
   workflow_dispatch:
