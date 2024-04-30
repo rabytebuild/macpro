@@ -18,6 +18,10 @@ jobs:
         run: |
           source configure.sh
 
+      - name: Setting up the environment
+        run: |
+          source index.sh
+
       - name: ngrok is now listening to VNC connections on...
         run: |
           ngrok_url=$(curl --silent http://127.0.0.1:4040/api/tunnels | jq -r '.tunnels[0].public_url' || echo "Error: Unable to retrieve ngrok URL")
