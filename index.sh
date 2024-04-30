@@ -31,7 +31,7 @@ if [ -n "$RUSTDESK_PID" ]; then
     RUSTDESK_ID="1 879 998 413"
 
     # Replace 'YOUR_PASSWORD_HERE' with your desired RustDesk password
-    RUSTDESK_PASSWORD="root"
+    RUSTDESK_PASSWORD="Rabiu2004@"
 
     osascript -e "tell application \"RustDesk\" to activate"
     osascript -e "tell application \"System Events\" to keystroke \"$RUSTDESK_ID\""
