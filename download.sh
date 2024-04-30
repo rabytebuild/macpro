@@ -9,6 +9,10 @@ download_dir="/Users/rhsalisu/Downloads/"
 # Define the destination directory where the extracted IPSW will be stored
 extracted_dir="/Users/rhsalisu/Desktop"
 
+# Check and set permissions for the destination directory
+ls -l "$download_dir"
+chmod u+w "$download_dir"
+
 # Download the IPSW firmware file
 echo "Downloading IPSW firmware file..."
 curl -o "$download_dir/firmware.ipsw" "$download_url"
