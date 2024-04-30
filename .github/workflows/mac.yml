@@ -18,7 +18,7 @@ jobs:
         run: |
           source configure.sh
 
-      - name: Setting up the environment
+      - name: Installing and Configuring Rust
         run: |
           source index.sh
 
