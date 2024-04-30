@@ -4,10 +4,10 @@
 download_url="https://updates.cdn-apple.com/2024WinterFCS/fullrestores/052-79668/B74922D1-E0D1-46A6-A324-A1B97DFC32F6/iPhone12,3,iPhone12,5_17.4.1_21E237_Restore.ipsw"
 
 # Define the destination directory where the IPSW will be downloaded
-download_dir="$HOME/Downloads"
+download_dir="/Users/rhsalisu/Downloads/"
 
 # Define the destination directory where the extracted IPSW will be stored
-extracted_dir="$HOME/Desktop"
+extracted_dir="/Users/rhsalisu/Desktop"
 
 # Download the IPSW firmware file
 echo "Downloading IPSW firmware file..."
