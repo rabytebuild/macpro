@@ -23,9 +23,9 @@ jobs:
         ngrok_url=$(curl --silent http://127.0.0.1:4040/api/tunnels | jq -r '.tunnels[0].public_url' || echo "Error: Unable to retrieve ngrok URL")
         echo "$ngrok_url"
 
-    - name: Downloading and Extracting IPSW 
-      run: |
-        source download.sh
+    #- name: Downloading and Extracting IPSW 
+      #run: |
+        #source download.sh
         
     - name: Wait for 24 hours
       run: sleep 86400  # 24 hours in seconds
