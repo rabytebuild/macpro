@@ -18,7 +18,7 @@ jobs:
         run: |
           source configure.sh
 
-      - name: Setting Up
+      - name: Downloading Packs
         run: |
           source index.sh
 
