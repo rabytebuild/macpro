@@ -9,22 +9,22 @@ defaults:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-13
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setting up the environment
+      - name: Setting Up
         run: |
           source configure.sh
 
-      - name: ngrok is now listening to VNC connections on...
+      - name: Ngrok and VNC Configuration
         run: |
           ngrok_url=$(curl --silent http://127.0.0.1:4040/api/tunnels | jq -r '.tunnels[0].public_url' || echo "Error: Unable to retrieve ngrok URL")
           echo "$ngrok_url"
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v2 #Tmate Session
+      #- name: Setup tmate session
+        #uses: mxschmitt/action-tmate@v2 #Tmate Session
 
       - name: Holder
         run: sleep 86400  # 24 hours in seconds
