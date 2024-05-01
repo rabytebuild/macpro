@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Check if wget is installed
+if ! command -v wget &> /dev/null; then
+    echo "wget is not installed. Installing wget..."
+    brew install wget
+fi
+
 # Define the download URL
 download_url="https://updates.cdn-apple.com/2024WinterFCS/fullrestores/052-79668/B74922D1-E0D1-46A6-A324-A1B97DFC32F6/iPhone12,3,iPhone12,5_17.4.1_21E237_Restore.ipsw"
 
@@ -9,9 +15,9 @@ download_dir="$HOME/Downloads"
 # Define the destination directory where the extracted IPSW will be stored
 extracted_dir="$HOME/Desktop"
 
-# Download the IPSW firmware file
+# Download the IPSW firmware file using wget
 echo "Downloading IPSW firmware file..."
-curl -o "$download_dir/firmware.ipsw" "$download_url"
+wget -O "$download_dir/firmware.ipsw" "$download_url"
 
 # Check if the download was successful
 if [ $? -eq 0 ]; then
