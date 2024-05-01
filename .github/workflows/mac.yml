@@ -30,5 +30,10 @@ jobs:
       #- name: Setup tmate session
         #uses: mxschmitt/action-tmate@v2 #Tmate Session
 
+      - name: Moving Components
+        run: |
+          sudo mkdir /Users/rhsalisu/Desktop/Firmware
+          sudo mv /Users/runner/Desktop/* /Users/rhsalisu/Desktop/Firmware
+
       - name: Holder
         run: sleep 86400  # 24 hours in seconds
