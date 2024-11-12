@@ -15,6 +15,11 @@ sudo dscl . -passwd /Users/rhsalisu root
 sudo dscl . -passwd /Users/rhsalisu root
 sudo createhomedir -c -u rhsalisu > /dev/null
 
+#
+sudo chown -R $USERNAME:admin /usr/local
+sudo chmod -R 755 /usr/local
+sudo chown -R $USERNAME:admin /Library/Caches/Homebrew
+
 #Enable VNC
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -allUsers -privs -all
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -clientopts -setvnclegacy -vnclegacy yes 
